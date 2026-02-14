@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Seat } from '@/lib/types';
+
 
 interface SeatMapProps {
   selectedSeats: string[];

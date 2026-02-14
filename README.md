@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🎬 CineNYC | Premium Movie Booking Application
 
-First, run the development server:
+Experience cinema like never before. CineNYC is a next-generation movie booking platform providing a premium, seamless interface for reserving seats at top New York City theaters.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![CineNYC Banner](public/banner.png)
+
+## ✨ Features
+
+- **Premium UI/UX**: Immersive, dark-themed design with smooth animations and transitions.
+- **Real-time Seat Selection**: Interactive seat map with dynamic pricing.
+- **Multiple Payment Gateways**:
+  - 💳 **Stripe**: Secure credit card processing.
+  - 🛡️ **Paystack**: Popular Payment gateway for localized payments.
+  - 🅿️ **PayPal**: Trusted global payment processor.
+- **AI Assistant**: Integration with **Google Gemini** for personalized movie recommendations.
+- **Responsive Design**: Fully optimized for desktop, tablet, and mobile devices.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Payments**: 
+  - `@stripe/react-stripe-js`
+  - `react-paystack`
+  - PayPal JS SDK
+- **AI**: `@google/genai`
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ installed
+- Stripe Account (for API keys)
+- Paystack Account (for public keys)
+- Google AI Studio Account (for Gemini API key)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/noahdevelopsio/CINENYC.git
+   cd CINENYC
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**
+   Create a `.env.local` file in the root directory and add your keys:
+   ```env
+   # Gemini AI
+   GEMINI_API_KEY=your_gemini_api_key
+
+   # Stripe
+   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+   STRIPE_SECRET_KEY=sk_test_...
+
+   # Paystack
+   NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_test_...
+   PAYSTACK_SECRET_KEY=sk_test_...
+
+   # PayPal
+   NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+   ```
+
+4. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📁 Project Structure
+
+```
+├── app/
+│   ├── actions/       # Server Actions (Gemini AI)
+│   ├── api/           # API Routes (Stripe/Paystack verification)
+│   ├── layout.tsx     # Root Layout
+│   └── page.tsx       # Main Application Logic
+├── components/        # Reusable UI Component
+│   ├── SeatMap.tsx
+│   ├── StripePayment.tsx
+│   ├── PaystackPayment.tsx
+│   ├── PayPalCheckout.tsx
+│   └── ...
+├── lib/               # Utilities & Constants
+└── public/            # Static Assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔐 Security & Best Practices
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Server-Side Processing**: Payment intents and verifications are handled strictly on the server to prevent manipulation.
+- **Environment Variables**: Sensitive keys are never exposed to the client bundle.
+- **Strict Typing**: Comprehensive TypeScript interfaces for all data models.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contributing
 
-## Learn More
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.

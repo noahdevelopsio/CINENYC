@@ -14,8 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CineNYC | Premium Movie Booking",
-  description: "Experience cinema like never before.",
+  title: {
+    template: '%s | CineNYC',
+    default: 'CineNYC | Premium Movie Booking',
+  },
+  description: "Experience cinema like never before. Book your tickets for the best theaters in NYC.",
 };
 
 export default function RootLayout({
