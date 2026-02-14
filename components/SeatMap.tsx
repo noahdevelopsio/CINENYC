@@ -31,34 +31,36 @@ const SeatMap: React.FC<SeatMapProps> = ({ selectedSeats, onToggleSeat }) => {
         <p className="text-center text-[10px] uppercase tracking-[0.4em] text-zinc-500 mt-4">Screen</p>
       </div>
 
-      <div className="grid gap-3">
-        {ROWS.map((row) => (
-          <div key={row} className="flex gap-3 items-center">
-            <span className="w-4 text-xs font-bold text-zinc-600 mr-2">{row}</span>
-            <div className="flex gap-2">
-              {COLS.map((col) => {
-                const seatId = `${row}${col}`;
-                const isSelected = selectedSeats.includes(seatId);
-                const isOccupied = occupiedSeats.has(seatId);
+      <div className="w-full overflow-x-auto pb-4 custom-scrollbar">
+        <div className="grid gap-2 md:gap-3 min-w-fit mx-auto px-4">
+          {ROWS.map((row) => (
+            <div key={row} className="flex gap-2 md:gap-3 items-center">
+              <span className="w-4 text-[10px] md:text-xs font-bold text-zinc-600 mr-2">{row}</span>
+              <div className="flex gap-1.5 md:gap-2">
+                {COLS.map((col) => {
+                  const seatId = `${row}${col}`;
+                  const isSelected = selectedSeats.includes(seatId);
+                  const isOccupied = occupiedSeats.has(seatId);
 
-                return (
-                  <button
-                    key={seatId}
-                    disabled={isOccupied}
-                    onClick={() => onToggleSeat(seatId)}
-                    className={`
-                      w-6 h-6 rounded-t-lg transition-all duration-200
-                      ${isOccupied ? 'bg-zinc-800 cursor-not-allowed opacity-40' :
-                        isSelected ? 'bg-blue-500 scale-110 shadow-lg shadow-blue-500/50' :
-                          'bg-zinc-700 hover:bg-zinc-600 hover:scale-105'}
-                    `}
-                    title={seatId}
-                  />
-                );
-              })}
+                  return (
+                    <button
+                      key={seatId}
+                      disabled={isOccupied}
+                      onClick={() => onToggleSeat(seatId)}
+                      className={`
+                        w-5 h-5 md:w-6 md:h-6 rounded-t-sm md:rounded-t-lg transition-all duration-200
+                        ${isOccupied ? 'bg-zinc-800 cursor-not-allowed opacity-40' :
+                          isSelected ? 'bg-blue-500 scale-110 shadow-lg shadow-blue-500/50' :
+                            'bg-zinc-700 hover:bg-zinc-600 hover:scale-105'}
+                      `}
+                      title={seatId}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div className="flex gap-6 mt-4 text-xs font-medium text-zinc-400">

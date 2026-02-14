@@ -120,25 +120,25 @@ const App: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 py-8">
         {step === 'browse' && (
           <>
-            <section className="mb-20 relative rounded-[2.5rem] overflow-hidden aspect-[21/9] min-h-[450px] shadow-2xl border border-white/5 group">
+            <section className="mb-20 relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden aspect-[4/5] md:aspect-[21/9] min-h-[500px] md:min-h-[450px] shadow-2xl border border-white/5 group">
               <img
                 src={featuredMovie.banner}
                 alt={featuredMovie.title}
                 className="absolute inset-0 w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              <div className="absolute bottom-12 left-12 max-w-2xl">
+              <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl right-6 md:right-auto">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 shadow-lg shadow-blue-500/20">
                   Spotlight Release
                 </div>
-                <h2 className="text-6xl font-black tracking-tight mb-4 uppercase italic">{featuredMovie.title}</h2>
-                <p className="text-lg text-zinc-200 mb-8 line-clamp-2 max-w-lg">
+                <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4 uppercase italic leading-none">{featuredMovie.title}</h2>
+                <p className="text-sm md:text-lg text-zinc-200 mb-6 md:mb-8 line-clamp-3 md:line-clamp-2 max-w-lg">
                   {featuredMovie.description} Witness the ultimate cinematic journey at CineNYC theaters.
                 </p>
                 <div className="flex gap-4">
                   <button
                     onClick={() => handleBookNow(featuredMovie)}
-                    className="px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2 shadow-xl border-none cursor-pointer"
+                    className="w-full md:w-auto justify-center px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2 shadow-xl border-none cursor-pointer"
                   >
                     <Play className="w-4 h-4 fill-current" />
                     Buy Tickets
@@ -147,11 +147,11 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 md:mb-12 gap-4">
               <div className="flex items-center gap-4">
-                <div className="w-1.5 h-10 bg-blue-600 rounded-full" />
+                <div className="w-1.5 h-8 md:h-10 bg-blue-600 rounded-full" />
                 <div>
-                  <h3 className="text-4xl font-black tracking-tighter uppercase italic leading-none">
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tighter uppercase italic leading-none">
                     Now Playing
                   </h3>
                 </div>
@@ -164,10 +164,10 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 animate-in fade-in duration-500">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 animate-in fade-in duration-500">
               {MOVIES.map(movie => (
                 <div key={movie.id} className="group cursor-pointer">
-                  <div className="relative aspect-[2/3] rounded-[2.5rem] overflow-hidden mb-5 shadow-2xl border border-white/5 bg-zinc-900">
+                  <div className="relative aspect-[2/3] rounded-[2rem] overflow-hidden mb-5 shadow-2xl border border-white/5 bg-zinc-900">
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -202,19 +202,19 @@ const App: React.FC = () => {
         )}
 
         {step === 'seats' && (
-          <div className="max-w-5xl mx-auto py-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="max-w-5xl mx-auto py-6 md:py-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <button
               onClick={() => { setStep('browse'); setSelectedMovie(booking.movie); }}
-              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white mb-10 transition-colors bg-zinc-900/50 px-6 py-3 rounded-full border border-white/5 cursor-pointer"
+              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white mb-6 md:mb-10 transition-colors bg-zinc-900/50 px-6 py-3 rounded-full border border-white/5 cursor-pointer"
             >
               <ChevronRight className="w-4 h-4 rotate-180" />
               Back to Showtimes
             </button>
 
-            <div className="grid lg:grid-cols-[1fr_360px] gap-16">
-              <div>
-                <div className="mb-12">
-                  <h2 className="text-5xl font-black tracking-tighter mb-4 uppercase italic leading-none">{booking.movie?.title}</h2>
+            <div className="grid lg:grid-cols-[1fr_360px] gap-8 md:gap-16">
+              <div className="order-2 lg:order-1">
+                <div className="mb-8 md:mb-12">
+                  <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 uppercase italic leading-none">{booking.movie?.title}</h2>
                   <div className="flex items-center gap-6 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
                     <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-blue-500" /> {booking.showTime?.time}</span>
                   </div>
@@ -222,11 +222,11 @@ const App: React.FC = () => {
                 <SeatMap selectedSeats={booking.selectedSeats} onToggleSeat={toggleSeat} />
               </div>
 
-              <div className="space-y-8">
-                <div className="bg-zinc-950 border border-white/5 rounded-[2.5rem] p-10 shadow-[0_0_50px_rgba(0,0,0,0.5)] relative overflow-hidden">
+              <div className="space-y-8 order-1 lg:order-2">
+                <div className="bg-zinc-950 border border-white/5 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-[0_0_50px_rgba(0,0,0,0.5)] relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[80px] -z-10" />
                   <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-8">Reservation Info</h3>
-                  <div className="space-y-8 mb-12">
+                  <div className="space-y-6 md:space-y-8 mb-8 md:mb-12">
                     <div className="flex justify-between items-center">
                       <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600">Tickets</span>
                       <span className="font-black text-white text-xl">
@@ -261,33 +261,33 @@ const App: React.FC = () => {
         )}
 
         {step === 'payment' && (
-          <div className="max-w-xl mx-auto py-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="max-w-xl mx-auto py-6 md:py-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <button
               onClick={() => setStep('seats')}
-              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white mb-10 transition-colors bg-zinc-900/50 px-6 py-3 rounded-full border border-white/5 cursor-pointer"
+              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white mb-6 md:mb-10 transition-colors bg-zinc-900/50 px-6 py-3 rounded-full border border-white/5 cursor-pointer"
             >
               <ChevronRight className="w-4 h-4 rotate-180" />
               Cancel & Change Seats
             </button>
 
-            <div className="bg-zinc-950 border border-white/5 rounded-[3rem] p-12 shadow-2xl relative overflow-hidden">
+            <div className="bg-zinc-950 border border-white/5 rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400" />
-              <div className="mb-12 text-center">
+              <div className="mb-8 md:mb-12 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full text-[8px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-6 border border-white/10">
                   <ShieldCheck className="w-3 h-3 text-blue-500" />
                   Verified Checkout
                 </div>
-                <h2 className="text-4xl font-black tracking-tighter mb-4 uppercase italic leading-none">Complete Booking</h2>
+                <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-4 uppercase italic leading-none">Complete Booking</h2>
                 <div className="flex flex-col items-center gap-2">
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">Order Total</span>
-                  <span className="text-6xl font-black text-white italic tracking-tighter">${totalAmount.toFixed(2)}</span>
+                  <span className="text-5xl md:text-6xl font-black text-white italic tracking-tighter">${totalAmount.toFixed(2)}</span>
                 </div>
               </div>
 
-              <div className="mb-10 p-8 bg-black border border-white/5 rounded-3xl space-y-4 shadow-inner">
+              <div className="mb-8 md:mb-10 p-6 md:p-8 bg-black border border-white/5 rounded-3xl space-y-4 shadow-inner">
                 <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
                   <span className="text-zinc-600">Feature Movie</span>
-                  <span className="text-white italic">{booking.movie?.title}</span>
+                  <span className="text-white italic text-right max-w-[150px]">{booking.movie?.title}</span>
                 </div>
                 <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
                   <span className="text-zinc-600">Screening</span>
@@ -316,36 +316,36 @@ const App: React.FC = () => {
               </div>
 
               {/* Payment Method Selector */}
-              <div className="grid grid-cols-3 gap-3 mb-8">
+              <div className="grid grid-cols-3 gap-2 md:gap-3 mb-8">
                 <button
                   onClick={() => setPaymentMethod('stripe')}
                   className={clsx(
-                    "p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all cursor-pointer",
+                    "p-3 md:p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all cursor-pointer",
                     paymentMethod === 'stripe' ? "bg-blue-900/20 border-blue-500 text-blue-400" : "bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-700"
                   )}
                 >
                   <CreditCard className="w-5 h-5 mb-1" />
-                  <span className="text-[10px] font-black uppercase tracking-widest">Card</span>
+                  <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Card</span>
                 </button>
                 <button
                   onClick={() => setPaymentMethod('paypal')}
                   className={clsx(
-                    "p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all cursor-pointer",
+                    "p-3 md:p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all cursor-pointer",
                     paymentMethod === 'paypal' ? "bg-blue-900/20 border-blue-500 text-blue-400" : "bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-700"
                   )}
                 >
                   <svg className="w-5 h-5 fill-current mb-1" viewBox="0 0 24 24"><path d="M7.076 21.337l.732-4.634.331-1.603 1.954-9.438c.164-.897.904-1.662 1.834-1.662h4.526c2.563 0 4.398 1.488 4.706 4.137.151 1.284-.19 3.016-1.579 4.305-1.295 1.196-3.003 1.638-4.996 1.638H12.75l-.975 7.257H7.076z" /></svg>
-                  <span className="text-[10px] font-black uppercase tracking-widest">PayPal</span>
+                  <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">PayPal</span>
                 </button>
                 <button
                   onClick={() => setPaymentMethod('paystack')}
                   className={clsx(
-                    "p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all cursor-pointer",
+                    "p-3 md:p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all cursor-pointer",
                     paymentMethod === 'paystack' ? "bg-green-900/20 border-green-500 text-green-400" : "bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-700"
                   )}
                 >
                   <ShieldCheck className="w-5 h-5 mb-1" />
-                  <span className="text-[10px] font-black uppercase tracking-widest">Paystack</span>
+                  <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Paystack</span>
                 </button>
               </div>
 
@@ -379,24 +379,24 @@ const App: React.FC = () => {
 
         {
           step === 'checkout' && (
-            <div className="max-w-2xl mx-auto py-20 text-center animate-in zoom-in-95 duration-700">
-              <div className="w-24 h-24 bg-blue-500/20 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-10 border border-blue-500/30 animate-bounce">
-                <Check className="w-12 h-12 stroke-[3]" />
+            <div className="max-w-2xl mx-auto py-12 md:py-20 text-center animate-in zoom-in-95 duration-700">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-blue-500/20 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-8 md:mb-10 border border-blue-500/30 animate-bounce">
+                <Check className="w-10 h-10 md:w-12 md:h-12 stroke-[3]" />
               </div>
-              <h2 className="text-5xl font-black tracking-tighter mb-4 italic uppercase leading-none">Verified!</h2>
-              <p className="text-zinc-500 text-sm font-bold uppercase tracking-widest mb-16 max-w-xs mx-auto">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 italic uppercase leading-none">Verified!</h2>
+              <p className="text-zinc-500 text-xs md:text-sm font-bold uppercase tracking-widest mb-12 md:mb-16 max-w-xs mx-auto">
                 Your cinematic journey is confirmed. Scan your mobile pass at the lobby.
               </p>
 
-              <div className="bg-zinc-950 border border-white/10 rounded-[3rem] p-0 mb-16 text-left shadow-2xl relative overflow-hidden group">
-                <img src={booking.movie?.banner} className="w-full h-40 object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
-                <div className="p-12 -mt-24 relative z-10 flex flex-col sm:flex-row gap-10">
-                  <img src={booking.movie?.poster} className="w-36 h-52 object-cover rounded-3xl shadow-2xl border border-white/10" />
-                  <div className="flex flex-col justify-end pb-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-[9px] font-black uppercase tracking-widest text-green-400 mb-4 w-fit">
+              <div className="bg-zinc-950 border border-white/10 rounded-[2.5rem] md:rounded-[3rem] p-0 mb-12 md:mb-16 text-left shadow-2xl relative overflow-hidden group">
+                <img src={booking.movie?.banner} className="w-full h-32 md:h-40 object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                <div className="p-8 md:p-12 -mt-16 md:-mt-24 relative z-10 flex flex-col sm:flex-row gap-6 md:gap-10">
+                  <img src={booking.movie?.poster} className="w-28 h-40 md:w-36 md:h-52 object-cover rounded-3xl shadow-2xl border border-white/10 mx-auto sm:mx-0" />
+                  <div className="flex flex-col justify-end pb-4 text-center sm:text-left">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-[9px] font-black uppercase tracking-widest text-green-400 mb-4 w-fit mx-auto sm:mx-0">
                       Active Reservation
                     </div>
-                    <h3 className="text-4xl font-black mb-4 leading-none uppercase italic tracking-tighter">{booking.movie?.title}</h3>
+                    <h3 className="text-3xl md:text-4xl font-black mb-4 leading-none uppercase italic tracking-tighter">{booking.movie?.title}</h3>
                     <div className="space-y-3 text-[10px] font-black text-zinc-500 uppercase tracking-widest">
                       <p>{booking.showTime?.time} • {booking.showTime?.format}</p>
                       <p className="text-blue-500 text-xl mt-4">SEATS {booking.selectedSeats.join(', ')}</p>
@@ -418,27 +418,27 @@ const App: React.FC = () => {
       {
         selectedMovie && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/98 backdrop-blur-2xl animate-in fade-in duration-300">
-            <div className="relative w-full max-w-6xl bg-zinc-950 rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,1)] border border-white/5 animate-in zoom-in-95 duration-500">
+            <div className="relative w-full max-w-6xl bg-zinc-950 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,1)] border border-white/5 animate-in zoom-in-95 duration-500">
               <button
                 onClick={() => setSelectedMovie(null)}
-                className="absolute top-10 right-10 z-30 p-4 bg-black/60 hover:bg-red-500 rounded-full border border-white/10 transition-all hover:scale-110 active:scale-90 shadow-2xl group cursor-pointer border-none"
+                className="absolute top-6 right-6 md:top-10 md:right-10 z-30 p-3 md:p-4 bg-black/60 hover:bg-red-500 rounded-full border border-white/10 transition-all hover:scale-110 active:scale-90 shadow-2xl group cursor-pointer border-none"
               >
-                <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
+                <X className="w-5 h-5 md:w-6 md:h-6 group-hover:rotate-90 transition-transform" />
               </button>
 
-              <div className="h-[90vh] lg:h-[85vh] overflow-y-auto custom-scrollbar">
-                <div className="relative h-64 md:h-[450px] w-full group">
+              <div className="h-[85vh] md:h-[85vh] overflow-y-auto custom-scrollbar">
+                <div className="relative h-48 md:h-[450px] w-full group">
                   <img
                     src={selectedMovie.banner}
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
 
-                  <div className="absolute bottom-12 left-10 md:left-14 flex items-end gap-12">
+                  <div className="absolute bottom-6 left-6 md:bottom-12 md:left-14 flex items-end gap-6 md:gap-12">
                     <img src={selectedMovie.poster} className="hidden md:block w-52 aspect-[2/3] object-cover rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10 translate-y-24" />
-                    <div className="mb-6">
-                      <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 uppercase italic leading-none">{selectedMovie.title}</h2>
-                      <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
+                    <div className="mb-2 md:mb-6">
+                      <h2 className="text-3xl md:text-7xl font-black tracking-tighter mb-4 md:mb-6 uppercase italic leading-none">{selectedMovie.title}</h2>
+                      <div className="flex flex-wrap items-center gap-3 md:gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
                         <span className="px-3 py-1 border border-zinc-800 rounded-lg text-white">{selectedMovie.rating}</span>
                         <span>{selectedMovie.duration}</span>
                         <span className="text-blue-500 flex items-center gap-2"><Star className="w-4 h-4 fill-current" /> {selectedMovie.popularity}% Approval</span>
@@ -447,18 +447,18 @@ const App: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid lg:grid-cols-[1fr_380px] gap-16 p-12 md:p-20 md:pt-36">
-                  <div className="space-y-16">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 md:gap-16 p-6 md:p-20 md:pt-36">
+                  <div className="space-y-12 md:space-y-16">
                     <section>
-                      <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-8">Narrative Arc</h3>
-                      <p className="text-zinc-400 text-2xl leading-relaxed font-medium italic opacity-90 tracking-tight">{selectedMovie.description}</p>
+                      <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-4 md:mb-8">Narrative Arc</h3>
+                      <p className="text-zinc-400 text-lg md:text-2xl leading-relaxed font-medium italic opacity-90 tracking-tight">{selectedMovie.description}</p>
                     </section>
 
                     <section>
-                      <div className="bg-white/5 rounded-[3rem] p-12 border border-white/5 relative overflow-hidden group/showtimes">
+                      <div className="bg-white/5 rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 border border-white/5 relative overflow-hidden group/showtimes">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[100px] -z-10 group-hover/showtimes:bg-blue-500/10 transition-all duration-700" />
-                        <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-10">Select Screening Time</h3>
-                        <div className="flex flex-wrap gap-5">
+                        <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-6 md:mb-10">Select Screening Time</h3>
+                        <div className="flex flex-wrap gap-3 md:gap-5">
                           {currentMovieShowtimes.map(st => {
                             const theater = THEATERS.find(t => t.id === st.theaterId);
                             if (!theater) return null;
@@ -466,9 +466,9 @@ const App: React.FC = () => {
                               <button
                                 key={st.id}
                                 onClick={() => startSeatSelection(theater, st)}
-                                className="flex flex-col items-center justify-center min-w-[140px] py-8 bg-black/40 hover:bg-blue-600 border border-white/5 hover:border-blue-400 rounded-[2rem] transition-all shadow-2xl active:scale-95 group/time cursor-pointer"
+                                className="flex flex-col items-center justify-center min-w-[100px] md:min-w-[140px] py-6 md:py-8 bg-black/40 hover:bg-blue-600 border border-white/5 hover:border-blue-400 rounded-[1.5rem] md:rounded-[2rem] transition-all shadow-2xl active:scale-95 group/time cursor-pointer"
                               >
-                                <span className="text-3xl font-black tracking-tighter group-hover/time:scale-110 transition-transform italic mb-1">{st.time}</span>
+                                <span className="text-2xl md:text-3xl font-black tracking-tighter group-hover/time:scale-110 transition-transform italic mb-1">{st.time}</span>
                                 <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600 group-hover/time:text-blue-100">{st.format}</span>
                               </button>
                             );
@@ -478,16 +478,16 @@ const App: React.FC = () => {
                     </section>
                   </div>
 
-                  <div className="space-y-14">
+                  <div className="space-y-8 md:space-y-14">
                     <div>
-                      <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-6">Director</h3>
-                      <p className="font-black text-white text-xl uppercase tracking-tighter italic">{selectedMovie.director}</p>
+                      <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-4 md:mb-6">Director</h3>
+                      <p className="font-black text-white text-lg md:text-xl uppercase tracking-tighter italic">{selectedMovie.director}</p>
                     </div>
                     <div>
-                      <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-8">Lead Casting</h3>
+                      <h3 className="text-[10px] uppercase font-black tracking-[0.4em] text-zinc-600 mb-6 md:mb-8">Lead Casting</h3>
                       <ul className="space-y-4">
                         {selectedMovie.cast.map(c => (
-                          <li key={c} className="font-bold text-zinc-400 text-lg hover:text-blue-500 transition-colors cursor-default flex items-center gap-4">
+                          <li key={c} className="font-bold text-zinc-400 text-base md:text-lg hover:text-blue-500 transition-colors cursor-default flex items-center gap-4">
                             <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
                             {c}
                           </li>
@@ -504,10 +504,10 @@ const App: React.FC = () => {
 
       <GeminiAssistant />
 
-      <footer className="bg-zinc-950 border-t border-white/5 mt-32 py-24">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-16">
+      <footer className="bg-zinc-950 border-t border-white/5 mt-20 md:mt-32 py-12 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-16">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="text-3xl font-black tracking-tighter text-blue-500 mb-8 flex items-center gap-3">
+            <h2 className="text-3xl font-black tracking-tighter text-blue-500 mb-6 md:mb-8 flex items-center gap-3">
               <Ticket className="w-8 h-8" />
               <span>CINE<span className="text-white">NYC</span></span>
             </h2>
@@ -516,31 +516,31 @@ const App: React.FC = () => {
             </p>
           </div>
           <div>
-            <h4 className="text-[10px] uppercase font-black tracking-[0.3em] mb-10 text-white">Guest Matrix</h4>
-            <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest text-zinc-600">
+            <h4 className="text-[10px] uppercase font-black tracking-[0.3em] mb-6 md:mb-10 text-white">Guest Matrix</h4>
+            <ul className="space-y-3 md:space-y-5 text-[11px] font-black uppercase tracking-widest text-zinc-600">
               <li><a href="#" className="hover:text-blue-500 transition-colors">Membership</a></li>
               <li><a href="#" className="hover:text-blue-500 transition-colors">Private Events</a></li>
               <li><a href="#" className="hover:text-blue-500 transition-colors">Gift Cards</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-[10px] uppercase font-black tracking-[0.3em] mb-10 text-white">Concierge</h4>
-            <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest text-zinc-600">
+            <h4 className="text-[10px] uppercase font-black tracking-[0.3em] mb-6 md:mb-10 text-white">Concierge</h4>
+            <ul className="space-y-3 md:space-y-5 text-[11px] font-black uppercase tracking-widest text-zinc-600">
               <li><a href="#" className="hover:text-blue-500 transition-colors">Contact</a></li>
               <li><a href="#" className="hover:text-blue-500 transition-colors">Accessibility</a></li>
               <li><a href="#" className="hover:text-blue-500 transition-colors">Terms</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-[10px] uppercase font-black tracking-[0.3em] mb-10 text-white">Legal</h4>
-            <ul className="space-y-5 text-[11px] font-black uppercase tracking-widest text-zinc-600">
+            <h4 className="text-[10px] uppercase font-black tracking-[0.3em] mb-6 md:mb-10 text-white">Legal</h4>
+            <ul className="space-y-3 md:space-y-5 text-[11px] font-black uppercase tracking-widest text-zinc-600">
               <li><a href="#" className="hover:text-blue-500 transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-blue-500 transition-colors">Ticket Terms</a></li>
               <li><a href="#" className="hover:text-blue-500 transition-colors">Refunds</a></li>
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 mt-24 pt-12 border-t border-white/5 text-center md:text-left">
+        <div className="max-w-7xl mx-auto px-4 mt-12 md:mt-24 pt-12 border-t border-white/5 text-center md:text-left">
           <p className="text-[9px] text-zinc-800 font-black uppercase tracking-[0.4em]">© 2026 CineNYC Global Cinema Group. All rights reserved.</p>
         </div>
       </footer>
