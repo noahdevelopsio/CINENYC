@@ -24,9 +24,14 @@ const PayPalCheckout: React.FC<PayPalCheckoutProps> = ({ amount, onSuccess, onCa
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    let isCancelled = false;
+
     // Check if PayPal SDK is loaded and the container ref is available
     if (window.paypal && paypalRef.current) {
-      window.paypal.Buttons({
+      // Clear container to prevent duplicate buttons
+      paypalRef.current.innerHTML = '';
+
+      const renderPromise = window.paypal.Buttons({
         style: {
           layout: 'vertical',
           color: 'blue',
@@ -48,19 +53,30 @@ const PayPalCheckout: React.FC<PayPalCheckoutProps> = ({ amount, onSuccess, onCa
         // Capture the transaction on approval
         onApprove: async (data: any, actions: any) => {
           await actions.order.capture();
-          onSuccess();
+          if (!isCancelled) onSuccess();
         },
         onCancel: () => {
-          onCancel();
+          if (!isCancelled) onCancel();
         },
         onError: (err: any) => {
-          // In production, consider logging to an error monitoring service
-          // For now, we suppress console errors to keep the console clean
+          // Suppress errors during development hot-reloads specifically for SDK-unloads
+          if (!isCancelled) console.error('PayPal Error:', err);
         }
-      }).render(paypalRef.current).then(() => {
-        setIsReady(true);
+      }).render(paypalRef.current);
+
+      renderPromise.then(() => {
+        if (!isCancelled) setIsReady(true);
+      }).catch((err: any) => {
+        // Catch initialization errors (common during hot-reload/strict-mode)
       });
     }
+
+    return () => {
+      isCancelled = true;
+      // We don't manually clear innerHTML here to avoid the "unhandled_exception" 
+      // where the SDK tries to access a removed node during its internal async setup.
+      // The next useEffect interaction will handle the clear.
+    };
   }, [amount, onSuccess, onCancel]);
 
   return (

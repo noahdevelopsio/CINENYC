@@ -35,8 +35,8 @@ const SeatMap: React.FC<SeatMapProps> = ({ selectedSeats, onToggleSeat }) => {
         <div className="grid gap-2 md:gap-3 min-w-fit mx-auto px-4">
           {ROWS.map((row) => (
             <div key={row} className="flex gap-2 md:gap-3 items-center">
-              <span className="w-4 text-[10px] md:text-xs font-bold text-zinc-600 mr-2">{row}</span>
-              <div className="flex gap-1.5 md:gap-2">
+              <span className="w-4 text-[10px] md:text-xs font-bold text-zinc-600 mr-1 md:mr-2">{row}</span>
+              <div className="flex gap-1 md:gap-2">
                 {COLS.map((col) => {
                   const seatId = `${row}${col}`;
                   const isSelected = selectedSeats.includes(seatId);
@@ -48,7 +48,7 @@ const SeatMap: React.FC<SeatMapProps> = ({ selectedSeats, onToggleSeat }) => {
                       disabled={isOccupied}
                       onClick={() => onToggleSeat(seatId)}
                       className={`
-                        w-5 h-5 md:w-6 md:h-6 rounded-t-sm md:rounded-t-lg transition-all duration-200
+                        w-3.5 h-3.5 md:w-6 md:h-6 rounded-t-sm md:rounded-t-lg transition-all duration-200
                         ${isOccupied ? 'bg-zinc-800 cursor-not-allowed opacity-40' :
                           isSelected ? 'bg-blue-500 scale-110 shadow-lg shadow-blue-500/50' :
                             'bg-zinc-700 hover:bg-zinc-600 hover:scale-105'}

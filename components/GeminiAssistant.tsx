@@ -50,7 +50,7 @@ const GeminiAssistant: React.FC = () => {
       )}
 
       {isOpen && (
-        <div className="bg-zinc-950 border border-zinc-800 rounded-3xl w-80 sm:w-96 h-[500px] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+        <div className="bg-zinc-950 border border-zinc-800 rounded-[2rem] sm:w-96 h-[500px] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300 fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50">
           <div className="bg-black/50 p-4 border-b border-zinc-800 flex justify-between items-center backdrop-blur-md">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-blue-500" />
@@ -74,8 +74,8 @@ const GeminiAssistant: React.FC = () => {
             {history.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${msg.role === 'user'
-                    ? 'bg-blue-600 text-white rounded-br-none'
-                    : 'bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-bl-none'
+                  ? 'bg-blue-600 text-white rounded-br-none'
+                  : 'bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-bl-none'
                   }`}>
                   {msg.text}
                 </div>
