@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Seat } from '../types';
+import { Seat } from '@/lib/types';
 
 interface SeatMapProps {
   selectedSeats: string[];
@@ -48,9 +48,9 @@ const SeatMap: React.FC<SeatMapProps> = ({ selectedSeats, onToggleSeat }) => {
                     onClick={() => onToggleSeat(seatId)}
                     className={`
                       w-6 h-6 rounded-t-lg transition-all duration-200
-                      ${isOccupied ? 'bg-zinc-800 cursor-not-allowed opacity-40' : 
-                        isSelected ? 'bg-blue-500 scale-110 shadow-lg shadow-blue-500/50' : 
-                        'bg-zinc-700 hover:bg-zinc-600 hover:scale-105'}
+                      ${isOccupied ? 'bg-zinc-800 cursor-not-allowed opacity-40' :
+                        isSelected ? 'bg-blue-500 scale-110 shadow-lg shadow-blue-500/50' :
+                          'bg-zinc-700 hover:bg-zinc-600 hover:scale-105'}
                     `}
                     title={seatId}
                   />
