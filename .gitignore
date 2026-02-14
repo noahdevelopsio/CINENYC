@@ -19,6 +19,7 @@
 
 # production
 /build
+/_legacy_vite
 
 # misc
 .DS_Store
