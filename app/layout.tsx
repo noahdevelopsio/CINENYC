@@ -41,7 +41,7 @@ export default function RootLayout({
         {children}
         <Script
           src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'test'}&currency=USD&components=buttons`}
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
       </body>
     </html>

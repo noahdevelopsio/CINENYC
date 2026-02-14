@@ -23,11 +23,22 @@ const PayPalCheckout: React.FC<PayPalCheckoutProps> = ({ amount, onSuccess, onCa
   const paypalRef = useRef<HTMLDivElement>(null);
   const [isReady, setIsReady] = useState(false);
 
+  // Keep fresh references to callbacks to avoid effect re-runs
+  const onSuccessRef = useRef(onSuccess);
+  const onCancelRef = useRef(onCancel);
+
+  useEffect(() => {
+    onSuccessRef.current = onSuccess;
+    onCancelRef.current = onCancel;
+  }, [onSuccess, onCancel]);
+
   useEffect(() => {
     let isCancelled = false;
+    let intervalId: NodeJS.Timeout;
 
-    // Check if PayPal SDK is loaded and the container ref is available
-    if (window.paypal && paypalRef.current) {
+    const renderPayPalButtons = () => {
+      if (!window.paypal || !paypalRef.current) return;
+
       // Clear container to prevent duplicate buttons
       paypalRef.current.innerHTML = '';
 
@@ -39,7 +50,6 @@ const PayPalCheckout: React.FC<PayPalCheckoutProps> = ({ amount, onSuccess, onCa
           label: 'pay',
           height: 50
         },
-        // Create an order with the specified amount
         createOrder: (data: any, actions: any) => {
           return actions.order.create({
             purchase_units: [{
@@ -50,48 +60,59 @@ const PayPalCheckout: React.FC<PayPalCheckoutProps> = ({ amount, onSuccess, onCa
             }]
           });
         },
-        // Capture the transaction on approval
         onApprove: async (data: any, actions: any) => {
-          await actions.order.capture();
-          if (!isCancelled) onSuccess();
+          try {
+            await actions.order.capture();
+            if (!isCancelled && onSuccessRef.current) onSuccessRef.current();
+          } catch (err) {
+            // Handle capture error silently or UI notification
+          }
         },
         onCancel: () => {
-          if (!isCancelled) onCancel();
+          if (!isCancelled && onCancelRef.current) onCancelRef.current();
         },
         onError: (err: any) => {
-          // Suppress errors during development hot-reloads specifically for SDK-unloads
           if (!isCancelled) console.error('PayPal Error:', err);
+        },
+        onClick: (data: any, actions: any) => {
+          // No action needed for click event
         }
       }).render(paypalRef.current);
 
       renderPromise.then(() => {
         if (!isCancelled) setIsReady(true);
       }).catch((err: any) => {
-        // Catch initialization errors (common during hot-reload/strict-mode)
+        // Handle init errors
       });
+    };
+
+    if (window.paypal) {
+      renderPayPalButtons();
+    } else {
+      intervalId = setInterval(() => {
+        if (window.paypal) {
+          clearInterval(intervalId);
+          renderPayPalButtons();
+        }
+      }, 100);
     }
 
     return () => {
       isCancelled = true;
-      // We don't manually clear innerHTML here to avoid the "unhandled_exception" 
-      // where the SDK tries to access a removed node during its internal async setup.
-      // The next useEffect interaction will handle the clear.
+      if (intervalId) clearInterval(intervalId);
     };
-  }, [amount, onSuccess, onCancel]);
+  }, [amount]); // Only re-render if amount changes
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-700">
-      <div className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-2xl mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center">
-            <ShieldCheck className="w-6 h-6 text-blue-500" />
-          </div>
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-widest text-white">Secure Transaction</p>
-            <p className="text-[9px] text-zinc-500 uppercase font-bold tracking-tight">End-to-End Encrypted</p>
-          </div>
+    <div className="space-y-8 animate-in fade-in duration-700 relative z-10">
+      <div className="flex items-center gap-4 p-4 bg-blue-900/10 border border-blue-500/20 rounded-2xl">
+        <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center shrink-0">
+          <ShieldCheck className="w-5 h-5 text-blue-500" />
         </div>
-        <Lock className="w-4 h-4 text-zinc-700" />
+        <div>
+          <h4 className="text-sm font-bold text-white mb-1">Secure Payment</h4>
+          <p className="text-[10px] text-zinc-400">Your transaction is protected by PayPal's encryption.</p>
+        </div>
       </div>
 
       <div className="relative">

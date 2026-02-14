@@ -33,7 +33,7 @@ const App: React.FC = () => {
     selectedSeats: []
   });
   const [step, setStep] = useState<'browse' | 'seats' | 'payment' | 'checkout'>('browse');
-  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'paystack' | 'paypal'>('stripe');
+  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'paystack' | 'paypal'>('paypal');
   const [userEmail, setUserEmail] = useState('');
 
   /**
@@ -466,10 +466,10 @@ const App: React.FC = () => {
                               <button
                                 key={st.id}
                                 onClick={() => startSeatSelection(theater, st)}
-                                className="flex flex-col items-center justify-center min-w-[100px] md:min-w-[140px] py-6 md:py-8 bg-black/40 hover:bg-blue-600 border border-white/5 hover:border-blue-400 rounded-[1.5rem] md:rounded-[2rem] transition-all shadow-2xl active:scale-95 group/time cursor-pointer"
+                                className="flex flex-col items-center justify-center min-w-[70px] md:min-w-[140px] py-3 md:py-8 bg-black/40 hover:bg-blue-600 border border-white/5 hover:border-blue-400 rounded-xl md:rounded-[2rem] transition-all shadow-2xl active:scale-95 group/time cursor-pointer"
                               >
-                                <span className="text-2xl md:text-3xl font-black tracking-tighter group-hover/time:scale-110 transition-transform italic mb-1">{st.time}</span>
-                                <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600 group-hover/time:text-blue-100">{st.format}</span>
+                                <span className="text-base md:text-3xl font-black tracking-tighter group-hover/time:scale-110 transition-transform italic mb-1">{st.time}</span>
+                                <span className="text-[7px] md:text-[9px] font-black uppercase tracking-widest text-zinc-600 group-hover/time:text-blue-100">{st.format}</span>
                               </button>
                             );
                           })}

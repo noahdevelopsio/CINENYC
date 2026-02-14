@@ -31,12 +31,12 @@ const SeatMap: React.FC<SeatMapProps> = ({ selectedSeats, onToggleSeat }) => {
         <p className="text-center text-[10px] uppercase tracking-[0.4em] text-zinc-500 mt-4">Screen</p>
       </div>
 
-      <div className="w-full overflow-x-auto pb-4 custom-scrollbar">
-        <div className="grid gap-2 md:gap-3 min-w-fit mx-auto px-4">
+      <div className="w-full overflow-x-auto pb-8 custom-scrollbar flex justify-center">
+        <div className="grid gap-2 sm:gap-3 md:gap-4 min-w-fit mx-auto px-4">
           {ROWS.map((row) => (
-            <div key={row} className="flex gap-2 md:gap-3 items-center">
-              <span className="w-4 text-[10px] md:text-xs font-bold text-zinc-600 mr-1 md:mr-2">{row}</span>
-              <div className="flex gap-1 md:gap-2">
+            <div key={row} className="flex gap-3 sm:gap-4 md:gap-6 items-center justify-center">
+              <span className="w-4 text-[10px] md:text-sm font-bold text-zinc-600">{row}</span>
+              <div className="flex gap-1.5 sm:gap-2 md:gap-3">
                 {COLS.map((col) => {
                   const seatId = `${row}${col}`;
                   const isSelected = selectedSeats.includes(seatId);
@@ -48,10 +48,10 @@ const SeatMap: React.FC<SeatMapProps> = ({ selectedSeats, onToggleSeat }) => {
                       disabled={isOccupied}
                       onClick={() => onToggleSeat(seatId)}
                       className={`
-                        w-3.5 h-3.5 md:w-6 md:h-6 rounded-t-sm md:rounded-t-lg transition-all duration-200
+                        w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-t-sm md:rounded-t-lg transition-all duration-200
                         ${isOccupied ? 'bg-zinc-800 cursor-not-allowed opacity-40' :
                           isSelected ? 'bg-blue-500 scale-110 shadow-lg shadow-blue-500/50' :
-                            'bg-zinc-700 hover:bg-zinc-600 hover:scale-105'}
+                            'bg-zinc-700 hover:bg-zinc-600 hover:scale-105 active:scale-95'}
                       `}
                       title={seatId}
                     />
