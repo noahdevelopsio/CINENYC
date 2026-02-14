@@ -1,6 +1,7 @@
 {
-  "name": "temp_app",
-  "version": "0.1.0",
+  "name": "cinenyc-premium-booking",
+  "version": "1.0.0",
+  "description": "A premium movie ticket booking application built with Next.js, featuring real-time seat selection, multiple payment gateways (Stripe, PayPal, Paystack), and a Gemini AI assistant.",
   "private": true,
   "scripts": {
     "dev": "next dev",

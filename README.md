@@ -1,7 +1,9 @@
 
 # 🎬 CineNYC | Premium Movie Booking Application
 
-Experience cinema like never before. CineNYC is a next-generation movie booking platform providing a premium, seamless interface for reserving seats at top New York City theaters.
+Experience cinema like never before. **CineNYC** is a state-of-the-art movie booking platform designed for the modern cinephile. Built with a mobile-first philosophy, it provides a seamless, premium interface for reserving seats at top New York City theaters.
+
+Featuring **real-time seat mapping**, **secure multi-gateway payments** (Stripe, PayPal, Paystack), and an **AI-powered concierge**, CineNYC sets a new standard for digital ticketing experiences.
 
 ![CineNYC Banner](public/banner.png)
 
