@@ -69,7 +69,18 @@ Featuring **real-time seat mapping**, **secure multi-gateway payments** (Stripe,
    NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
    ```
 
-4. **Run the Development Server**
+4. **Database Setup (PostgreSQL)**
+   - Install PostgreSQL or use a cloud provider (e.g., Neon, Supabase, Vercel Postgres).
+   - Add your connection string to `.env`:
+     ```env
+     DATABASE_URL="postgresql://user:password@localhost:5432/cinenyc?schema=public"
+     ```
+   - Initialize the database schema:
+     ```bash
+     npx prisma migrate dev --name init
+     ```
+
+5. **Run the Development Server**
    ```bash
    npm run dev
    ```

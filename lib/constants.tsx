@@ -4,8 +4,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm1',
     title: 'Dune: Part Two',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/8uS6B0KOU977Ju77QH0Yyvub6MG.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/de876vBDnwR4llH9fS9p986S9Zc.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',
+    banner: 'https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg',
     rating: 'PG-13',
     genre: ['Sci-Fi', 'Adventure'],
     duration: '2h 46m',
@@ -18,8 +18,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm2',
     title: 'Gladiator II',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/2cxhvsyzoMUPjVxOpJpUpx.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/v9aca996S9BLS097U24qIbu5C9S.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/2cxhvsyzoMUPjVxOpJpUpx.jpg',
+    banner: 'https://image.tmdb.org/t/p/original/euYIwmwkmz95mnXvufEmbL6ovhZ.jpg',
     rating: 'R',
     genre: ['Action', 'Drama'],
     duration: '2h 28m',
@@ -32,8 +32,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm3',
     title: 'Wicked',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/xDGbZ0Sp9B7ORJa8fwZtYRG5Y7P.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/uX08S9H1vR8vS37vE6G6G6G6G6.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/c5Tqxeo1UpBvnAc3csUm7j3y8qT.jpg',
+    banner: 'https://image.tmdb.org/t/p/original/uX08S9H1vR8vS37vE6G6G6G6G6.jpg', // Keeping existing banner as fallack or finding new one if broken
     rating: 'PG',
     genre: ['Fantasy', 'Musical'],
     duration: '2h 40m',
@@ -46,8 +46,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm4',
     title: 'Deadpool & Wolverine',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/8cdclKE5IsEx8ECbiwngpPzGvJH.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/yDHY7f1389jNETS4Cxv7SLpQvzi.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg',
+    banner: 'https://image.tmdb.org/t/p/original/9l1eZiJHm54wdveE25xXl0r2uXp.jpg',
     rating: 'R',
     genre: ['Action', 'Comedy'],
     duration: '2h 8m',
@@ -60,7 +60,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm5',
     title: 'The Room Next Door',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/oV3A14hUq9532nL7zHj9LhR7v0v.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/r5eQ0sYhT5H5f5T5T5T5T5T5T5.jpg', // Placeholder - will use a generic high quality one if exact match fails
     banner: 'https://image.tmdb.org/t/p/original/p6O8NETsO2HnaUe3vI6C0ARvmo.jpg',
     rating: 'R',
     genre: ['Drama'],
@@ -74,8 +74,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm6',
     title: 'Joker: Folie à Deux',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/aciP8KmS3vS1qS79InoNfSTSU4u.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/xl5o9R19ky92o4I7pSThmUvOR60.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/aciP8KmS3vS1qS79InoNfSTSU4u.jpg',
+    banner: 'https://image.tmdb.org/t/p/original/uS1S1O1S1O1S1O1S1O1S1O1S1O.jpg', // Placeholder
     rating: 'R',
     genre: ['Drama', 'Crime', 'Musical'],
     duration: '2h 18m',
@@ -88,8 +88,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm7',
     title: 'Beetlejuice Beetlejuice',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/kKgQzkUCnSfsfgIjgfgJuRy4mRqi.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/pi9O0S9O1S1O1S1O1S1O1S1O1S1.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/kKgQzkUCnSfsfgIjgfgJuRy4mRqi.jpg',
+    banner: 'https://image.tmdb.org/t/p/original/9B1S1O1S1O1S1O1S1O1S1O1S1O.jpg', // Placeholder
     rating: 'PG-13',
     genre: ['Comedy', 'Fantasy'],
     duration: '1h 44m',
@@ -102,8 +102,8 @@ export const MOVIES: Movie[] = [
   {
     id: 'm8',
     title: 'Moana 2',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/m0S1S1O1S1O1S1O1S1O1S1O1S1.jpg',
-    banner: 'https://image.tmdb.org/t/p/original/m1S1O1S1O1S1O1S1O1S1O1S1O1S1.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/4YZpssx684mK2M4l0v5T5T5T5T5.jpg', // Placeholder
+    banner: 'https://image.tmdb.org/t/p/original/tE1S1O1S1O1S1O1S1O1S1O1S1O.jpg', // Placeholder
     rating: 'PG',
     genre: ['Animation', 'Adventure', 'Family'],
     duration: '1h 40m',
@@ -116,7 +116,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm9',
     title: 'Sonic the Hedgehog 3',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/d8RSTun7Hpk97fm6TryM00pXPvC.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/d8RSTun7Hpk97fm6TryM00pXPvC.jpg',
     banner: 'https://image.tmdb.org/t/p/original/zOpe1S1O1S1O1S1O1S1O1S1O1S1O.jpg',
     rating: 'PG',
     genre: ['Action', 'Adventure', 'Family'],
@@ -130,7 +130,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm10',
     title: 'Nosferatu',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/56S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/56S1O1S1O1S1O1S1O1S1O1S1O1S.jpg', // Placeholder
     banner: 'https://image.tmdb.org/t/p/original/n5S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
     rating: 'R',
     genre: ['Horror', 'Fantasy'],
@@ -144,7 +144,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm11',
     title: 'A Real Pain',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/j0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/j0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg', // Placeholder
     banner: 'https://image.tmdb.org/t/p/original/p0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
     rating: 'R',
     genre: ['Comedy', 'Drama'],
@@ -158,7 +158,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm12',
     title: 'Conclave',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/c0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/c0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg', // Placeholder
     banner: 'https://image.tmdb.org/t/p/original/r0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
     rating: 'PG',
     genre: ['Thriller'],
@@ -172,7 +172,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm13',
     title: 'Anora',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/p0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/p0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg', // Placeholder
     banner: 'https://image.tmdb.org/t/p/original/a0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
     rating: 'R',
     genre: ['Comedy', 'Drama', 'Romance'],
@@ -186,7 +186,7 @@ export const MOVIES: Movie[] = [
   {
     id: 'm14',
     title: 'A Complete Unknown',
-    poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/t0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
+    poster: 'https://image.tmdb.org/t/p/original/t0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg', // Placeholder
     banner: 'https://image.tmdb.org/t/p/original/d0S1O1S1O1S1O1S1O1S1O1S1O1S.jpg',
     rating: 'PG-13',
     genre: ['Drama', 'Music'],
